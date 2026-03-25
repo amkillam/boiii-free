@@ -5,6 +5,7 @@
 
 #include "scheduler.hpp"
 
+#include <utils/flags.hpp>
 #include <utils/hook.hpp>
 
 namespace branding
@@ -41,13 +42,16 @@ namespace branding
 	{
 		void post_unpack() override
 		{
-			scheduler::loop(draw_branding, scheduler::renderer);
 
-			// Change window title prefix
-			utils::hook::copy_string(0x14303F3D8_g, "EZZ");
-
-			// Change ingame console prefix
-			utils::hook::call(0x141339970_g, get_ingame_console_prefix_stub);
+			if (!utils::flags::has_flag("nobranding")) {
+				scheduler::loop(draw_branding, scheduler::renderer);
+	
+				// Change window title prefix
+				utils::hook::copy_string(0x14303F3D8_g, "EZZ");
+	
+				// Change ingame console prefix
+				utils::hook::call(0x141339970_g, get_ingame_console_prefix_stub);
+			}
 		}
 	};
 }

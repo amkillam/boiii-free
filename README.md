@@ -181,6 +181,7 @@ Launch BOIII with these arguments for extra features:
 | `-trimlogs` | Trim or rotate old log files on startup |
 | `-keep-launcher` | Keep the launcher process running after starting the game |
 | `-noconsole` | Suppress the external launcher console window |
+| `-nobranding` | Disable display of EZZ branding in window title, developer console command prefix, and in-game watermark. |
 
 **Example:**
 ```bash
